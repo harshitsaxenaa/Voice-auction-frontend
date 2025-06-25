@@ -4,6 +4,8 @@ import LiveAnalytics from "./components/LiveAnalytics";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
+
+
 const BACKEND_URL = "https://voice-auction.onrender.com/products";
 
 export default function App() {
@@ -34,62 +36,66 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
-  const filteredProducts = products
+  const filtered = products
     .filter((p) => p.name.toLowerCase().includes(search.toLowerCase()))
     .sort((a, b) =>
-      sortOrder === "low"
+      sortOrder === "asc"
         ? a.highest_bid - b.highest_bid
         : b.highest_bid - a.highest_bid
     );
 
   return (
-    <div className="bg-gradient-to-br from-black via-gray-900 to-black text-white min-h-screen flex flex-col justify-between">
-      <Header />
+    <div className="bg-gradient-to-br from-black via-gray-900 to-black text-white min-h-screen p-6 font-sans">
 
-      <main className="px-4 sm:px-6 lg:px-10 max-w-7xl w-full mx-auto py-10 grow">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 text-cyan-400">
-          🎯 Live Auction Dashboard
-        </h2>
+      {/* Header */}
+      <header className="py-8 text-center">
+        <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight">
+          🏆 Live Auction Hub
+        </h1>
+        <p className="text-gray-400 mt-2 text-sm">
+          Real-time bids • Interactive • Elegant • Fast
+        </p>
+      </header>
 
-        {/* Search & Sort */}
-        <div className="flex flex-col md:flex-row gap-4 justify-between items-center mb-8">
-          <input
-            type="text"
-            placeholder="🔍 Search product..."
-            className="w-full md:w-1/2 p-3 rounded-md bg-gray-800 border border-cyan-500 focus:outline-none focus:ring focus:ring-cyan-400 transition-all"
-            onChange={(e) => setSearch(e.target.value)}
+      {/* Controls */}
+      <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-10 px-4">
+        <input
+          type="text"
+          placeholder="🔍 Search items..."
+          className="px-5 py-3 rounded-xl bg-slate-800/80 text-white backdrop-blur-md border border-slate-700 w-full md:w-1/3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <select
+          className="px-5 py-3 rounded-xl bg-slate-800/80 text-white backdrop-blur-md border border-slate-700 w-full md:w-1/4 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+          value={sortOrder}
+          onChange={(e) => setSortOrder(e.target.value)}
+        >
+          <option value="desc">Sort: Highest Bid</option>
+          <option value="asc">Sort: Lowest Bid</option>
+        </select>
+      </div>
+
+      {/* Product Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 pb-20">
+        {filtered.map((product) => (
+          <ProductCard
+            key={product.name}
+            product={product}
+            previousBid={previousBids[product.name]}
           />
-          <select
-            className="w-full md:w-60 p-3 rounded-md bg-gray-800 border border-cyan-500 text-white"
-            value={sortOrder}
-            onChange={(e) => setSortOrder(e.target.value)}
-          >
-            <option value="none">Sort by</option>
-            <option value="low">Lowest to Highest Bid</option>
-            <option value="high">Highest to Lowest Bid</option>
-          </select>
-        </div>
+        ))}
+      </div>
+      
+      {/* Live Analytics Panel */}
+      <LiveAnalytics />
+	
+      {/* Footer */}
+      <footer className="text-center py-6 text-sm text-slate-500 border-t border-slate-700 mt-12">
+        © 2025 Voice Auction AI · Built with 💡 Passion
+      </footer>
 
-        {/* Product Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProducts.map((product) => (
-            <ProductCard
-              key={product.name}
-              product={product}
-              previousBid={previousBids[product.name]}
-            />
-          ))}
-        </div>
-
-        {/* Live Analytics Section */}
-        <div id="analytics" className="mt-12">
-          <LiveAnalytics />
-        </div>
-      </main>
-
-      <Footer />
-
-      {/* Voice Agent Widget */}
+      {/* Voice Agent Script */}
       <script
         id="omnidimension-web-widget"
         async
