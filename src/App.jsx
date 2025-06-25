@@ -97,7 +97,7 @@ export default function App() {
       <script
         id="omnidimension-web-widget"
         async
-        src={`https://backend.omnidim.io/web_widget.js?secret_key=${import.meta.env.VITE_OMNIDIM_KEY}`}
+        src="https://backend.omnidim.io/web_widget.js?secret_key=46cc15692c43611615a26bf7787faf99"
       ></script>
     </div>
   );
