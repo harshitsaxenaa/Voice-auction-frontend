@@ -58,15 +58,15 @@ npm install
 ```
 
 __Run locally__
-npm run dev
 
+```bash
+npm run dev
+```
 
 __3. Omnidimension Voice Agent__
+
 Embedded directly in the app (App.jsx):
 
-html
-Copy
-Edit
 <script
   id="omnidimension-web-widget"
   async
@@ -74,7 +74,7 @@ Edit
 ></script>
 
 
-# Functionality Checklist
+# Functionalities
  
  --> Add/search/sort products
  
@@ -88,7 +88,7 @@ Edit
 
  --> Live graph of highest bids
 
-Made With ❤️ by Harshit
+_Made With ❤️ by Harshit_
 
 
 
