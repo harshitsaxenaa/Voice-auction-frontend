@@ -4,8 +4,6 @@ import LiveAnalytics from "./components/LiveAnalytics";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-
-
 const BACKEND_URL = "https://voice-auction.onrender.com/products";
 
 export default function App() {
@@ -92,7 +90,7 @@ export default function App() {
 	
       {/* Footer */}
       <footer className="text-center py-6 text-sm text-slate-500 border-t border-slate-700 mt-12">
-        © 2025 Voice Auction AI · Built with 💡 Passion
+        © 2025 Voice Auction AI · Made with ❤️ by <span className="font-bold text-white">Harshit</span>
       </footer>
 
       {/* Voice Agent Script */}
