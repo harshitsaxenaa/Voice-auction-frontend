@@ -46,14 +46,7 @@ export default function App() {
     <div className="bg-gradient-to-br from-black via-gray-900 to-black text-white min-h-screen p-6 font-sans">
 
       {/* Header */}
-      <header className="py-8 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight">
-          🏆 Live Auction Hub
-        </h1>
-        <p className="text-gray-400 mt-2 text-sm">
-          Real-time bids • Interactive • Elegant • Fast
-        </p>
-      </header>
+      <Header />
 
       {/* Controls */}
       <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-10 px-4">
@@ -89,9 +82,7 @@ export default function App() {
       <LiveAnalytics />
 	
       {/* Footer */}
-      <footer className="text-center py-6 text-sm text-slate-500 border-t border-slate-700 mt-12">
-        © 2025 Voice Auction AI · Made with ❤️ by <span className="font-bold text-white">Harshit</span>
-      </footer>
+      <Footer />
 
       {/* Voice Agent Script */}
       <script
